@@ -1,6 +1,7 @@
 const fs = require("node:fs")
 const path = require('node:path')
 const {Client, Collection, Events, GatewayIntentBits} = require("discord.js")
+require("./deployCommands")// auto deploy
 
 const TOKEN = process.env.TOKEN
 
