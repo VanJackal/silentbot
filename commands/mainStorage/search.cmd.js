@@ -1,4 +1,4 @@
-const {SlashCommandBuilder} = require("discord.js")
+const {SlashCommandBuilder, EmbedBuilder} = require("discord.js")
 const ms = require("mainStorage/mainStorage")
 
 module.exports = {
@@ -17,12 +17,31 @@ module.exports = {
         if(results.length === 0) {
             await interaction.reply(`No results for ${item}`)
         } else {
-            let out = ".\n"
+            const embed = new EmbedBuilder()
+                .setColor('#1952ff')
+                .setTitle(`Search Results!`)
+                .setDescription(`Results for: ${item}`)
+
+            const fields = []
+
+
             results.forEach((result) => {
-                out += result.msg
-                out += "\n"
+                fields.push({
+                    name:result.item,
+                    value: result.msg
+                })
             })
-            await interaction.reply(out)
+            if(fields.length >=25){
+                embed.addFields(...fields.slice(0,24), {
+                    name:"Not what you're looking for?",
+                    value:"search returned more than 24 results you may need to narrow your search ;)"
+                })
+            } else {
+                embed.addFields(...fields)
+            }
+
+
+            await interaction.reply({embeds:[embed]})
         }
 
 
