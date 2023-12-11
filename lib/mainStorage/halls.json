@@ -250,7 +250,7 @@
                 "NULL"
             ]
         ],
-        "LEFT": [
+        "left": [
             [
                 "white candle",
                 "light grey candle",
@@ -501,7 +501,7 @@
             ]
         ]
     },
-    "Grey": {
+    "grey": {
         "right": [
             [
                 "oak trapdoor",
